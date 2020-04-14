@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Test.cs" />
+    <Compile Remove="RzutKosci.cs" />
+    <Compile Remove="Akcje.cs" />
+    <Compile Remove="Klasy ekwipunku\BronDystansowa.cs" />
+  </ItemGroup>
+</Project>

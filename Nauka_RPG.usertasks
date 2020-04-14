@@ -1,0 +1,5 @@
+<ListOfTaskListEntry>
+  <TaskListEntry file="" description="Nauczyc sie ArrayList" completed="True" />
+  <TaskListEntry file="" description="Nauczyć się List" completed="True" />
+  <TaskListEntry file="" description="Nauczyć się Type, typeof i przypisywania typów" />
+</ListOfTaskListEntry>
