@@ -66,8 +66,9 @@ namespace Nauka_RPG
         public string name;
         public AttributeType linkedAttribute;
         public int skillValue;
-        public bool IsPhisical { get; }
-        public bool HaveAdvantage { get; }
+        public bool IsPhysical { get; }
+        public bool IsExpert { get; }
+
 
         private int skillExp;
         private int skillToLvl;
@@ -77,16 +78,22 @@ namespace Nauka_RPG
             name = _name;
             linkedAttribute = _linkedAttr;
             skillValue = _skillValue;
-            IsPhisical = _isPhysical;
-            HaveAdvantage = false;
+            IsPhysical = _isPhysical;
+            IsExpert = false;
 
-            skillToLvl = skillValue;
+            skillToLvl = skillValue+1;
             skillExp = 0;
         }
 
-        private void SkillLvlUp()
+        private void SkillGetExp()
         {
-
+            skillExp++;
+            if(skillExp == skillToLvl)
+            {
+                skillValue++;
+                skillToLvl = skillValue + 1;
+                skillExp = 0;
+            }
         }
 
         

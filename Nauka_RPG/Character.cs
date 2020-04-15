@@ -12,11 +12,19 @@ namespace Nauka_RPG
 {
     public enum Race
     {
+        Undefined,
         Human,
         Elvan,
         Borakai,
         Yutri,
         Alboros,
+    }
+    public enum BackgroundType
+    {
+        Undefined,
+        BirthPlace,
+        Past,
+        Profession,
     }
     public enum Occupation
     {
@@ -60,6 +68,7 @@ namespace Nauka_RPG
         public float weight;
         private int age;
         public Occupation occupation;
+        private Dictionary<BackgroundType, Background> background = new Dictionary<BackgroundType, Background>();
         public List<Item> equipment = new List<Item>();
         public List<Bag> bags = new List<Bag>();
         public Dictionary<BodyPart, Weapon> equippedWeapons = new Dictionary<BodyPart, Weapon>()
@@ -82,6 +91,7 @@ namespace Nauka_RPG
         public int HeavyWounds { get; }
         protected int maxHeavyWounds;
         protected int physicalResistance = 0;
+        private int reactionPool;
         public Dictionary<BodyPart, int> armourClass = new Dictionary<BodyPart, int>()
         {
             { BodyPart.Head, 0 },
@@ -269,124 +279,43 @@ namespace Nauka_RPG
 
             
             List<int> generatedAttrValues = new List<int>();
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Zostały wylosowane wartości atrybutów. Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-            
             for (int i = 0; i < 8; i++)
             {
                 generatedAttrValues.Add(SystemMechanics.AttributeGenerator());
                 Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
 
             }
-            Console.Write("Siła będzie mieć przypisaną wartość z wiersza: ");
-            int attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Strength].attributeValue = generatedAttrValues[attrChoice-1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
 
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
+            //int loop = 1;
+            int attrChoice;
+            foreach (var attr in attributes)
             {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Kondycja będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Constitution].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
-            {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Precyzja będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Precision].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
-            {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Mobilność będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Mobility].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
-            {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Umysł będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Mind].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
-            {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Zmysł będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Sense].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
-            Console.Clear();
-            Console.WriteLine("Etap 2/4");
-            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
-
-            for (int i = 0; i < generatedAttrValues.Count; i++)
-            {
-                Console.WriteLine($"{i+1}. {generatedAttrValues[i]}");
-
-            }
-            Console.Write("Osobowość będzie mieć przypisaną wartość z wiersza: ");
-            attrChoice = Convert.ToInt32(Console.ReadLine());
-            attributes[AttributeType.Personality].attributeValue = generatedAttrValues[attrChoice - 1];
-            generatedAttrValues.RemoveAt(attrChoice - 1);
-
+               
+                Console.Clear();
+                Console.WriteLine("Etap 2/4");
+                Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
+                for (int i = 0; i < generatedAttrValues.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {generatedAttrValues[i]}");
+                }
             
-            attributes[AttributeType.Willpower].attributeValue = generatedAttrValues[0];
-            generatedAttrValues.RemoveAt(0);
+                Console.Write($"{attr.Value.attributeName} będzie mieć przypisaną wartość z wiersza: ");
+                attrChoice = Convert.ToInt32(Console.ReadLine());
+                attrChoice = (attrChoice > generatedAttrValues.Count && attrChoice <= 0) ? generatedAttrValues.Count : attrChoice;
 
+                attributes[attr.Key].attributeValue = generatedAttrValues[attrChoice-1];
+                generatedAttrValues.RemoveAt(attrChoice - 1);
+
+
+            }
+            /*
             Console.Clear();
             Console.WriteLine("Tak przedstawiają się przydzielone atrybuty:");
             foreach (var attr in attributes)
             {
                 attr.Value.CalculateAttribute();
-                //Console.WriteLine($"{attr.Value.attributeName}: {attr.Value.attributeValue} (+{attr.Value.attributeBonus})");
             }
             ShowInfo();
-
-            /*
-            foreach (var atr in attributes.Values)
-            {
-                atr.attributeValue = SystemMechanics.AttributeGenerator();
-                atr.attributeBonus = atr.attributeValue / 10;
-            }
             */
             attributes.Add(AttributeType.Magic, new Attribute("Magia", 0, false));
             attributes.Add(AttributeType.Soul, new Attribute("Dusza", 100, false));
@@ -397,7 +326,7 @@ namespace Nauka_RPG
             // Umiejętności bojowe
             skills.Add(SkillType.Whips, new Skill("Baty", AttributeType.Precision, 0, true));
             skills.Add(SkillType.Brawl, new Skill("Bijatyka", AttributeType.Precision, 0, true));
-            skills.Add(SkillType.Swords, new Skill("Miecze", AttributeType.Precision, 1, true));
+            skills.Add(SkillType.Swords, new Skill("Miecze", AttributeType.Precision, 0, true));
             skills.Add(SkillType.Axes, new Skill("Topory", AttributeType.Precision, 0, true));
             skills.Add(SkillType.Maces, new Skill("Obuchy", AttributeType.Precision, 0, true));
             skills.Add(SkillType.Polearms, new Skill("Drzewcowe", AttributeType.Precision, 0, true));
@@ -467,6 +396,11 @@ namespace Nauka_RPG
             initiativeBonus = attributes[AttributeType.Sense].attributeBonus + attributes[AttributeType.Mobility].attributeBonus;
             */
 
+            Console.Clear();
+            Console.WriteLine("Etap 3/4");
+            Console.WriteLine("Przypisz proszę poniszy atrybut do wybranej wartości, podając odpowiadający jej numer.");
+            List<>
+
             Console.Write("Zapisać postać? (T/N): ");
             string decision = Console.ReadLine().ToUpper();
 
@@ -516,6 +450,41 @@ namespace Nauka_RPG
                 Console.WriteLine($"{atr.Value.attributeName}: {atr.Value.attributeValue} (+{atr.Value.attributeBonus})");
             }
             Console.WriteLine($"\nMaks. życie: {maxHealth}");
+
+        }
+
+        private void ApplyRaceBonuses(Race _raceType)
+        {
+            while (race==Race.Undefined)
+            {
+                race = _raceType;
+
+                switch (race)
+                {
+                    case Race.Human:
+                        break;
+                    case Race.Elvan:
+                        attributes[AttributeType.Precision].attributeValue += SystemMechanics.K10Roll();
+                        attributes[AttributeType.Mobility].attributeValue += SystemMechanics.K10Roll();
+                        attributes[AttributeType.Sense].attributeValue += SystemMechanics.K10Roll();
+                        foreach (var attr in attributes.Values)
+                        {
+                            attr.CalculateAttribute();
+                        }
+
+
+                        
+                        break;
+                    case Race.Borakai:
+                        break;
+                    case Race.Yutri:
+                        break;
+                    case Race.Alboros:
+                        break;
+                    default:
+                        break;
+                }
+            }
 
         }
 

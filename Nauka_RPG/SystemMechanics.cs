@@ -39,10 +39,22 @@ namespace Nauka_RPG
             return (decimals == digits) ? true : false;
         }
 
-        public static int DamageRoll()
+        public static int K10Roll(int _nDices=1)
         {
             Random diceRoll = new Random();
-            int rollScore = diceRoll.Next(1, 11);
+            int rollScore = 0;
+            for (int i = 0; i < _nDices; i++)
+            {
+                rollScore += diceRoll.Next(1, 11);
+            }
+            return rollScore;
+        }
+        public static int DamageRoll(int _strMod, bool _isCritical=false)
+        {
+
+            Random diceRoll = new Random();
+            int rollScore = diceRoll.Next(1, 11) + _strMod;
+            rollScore += (_isCritical) ? diceRoll.Next(1, 11) : 0;
 
             return rollScore;
         }

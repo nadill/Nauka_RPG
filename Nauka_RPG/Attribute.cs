@@ -36,7 +36,7 @@ namespace Nauka_RPG
             attributeName = _attrName;
             attributeValue = _attrValue;
             IsPhysical = _isPhysical;
-
+            attributeExp = 0;
             
             
         }
@@ -44,7 +44,7 @@ namespace Nauka_RPG
         public void CalculateAttribute()
         {   
             attributeBonus = attributeValue / 10;
-            attributeExp = 0;
+            
             expToLvl = attributeBonus;
         }
 
