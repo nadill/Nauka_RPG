@@ -8,28 +8,24 @@ using System.Text.RegularExpressions;
 
 namespace Nauka_RPG
 {
-
+    
     public class Program
     {
         public static void Main(string[] args)
         {
-            Postac etienne = new Postac("elvan", "Etienne", "Shael");
-            Postac vroq = new Postac("borak'ai", "Vroq", "Sol");
+
+            Console.Write("Witaj użytkowniku. Czy chcesz wczytać postać (W), czy stworzyć nową (N)?: ");
+            string decyzja = Console.ReadLine().ToUpper();
             
+            if (decyzja == "N")
+            {
+                
 
-            
-            etienne.GenerujBron("Elficki srebrny miecz", "Miecze", 2.5F, 3, 10, 1);
-            etienne.GenerujBron("Drewniany kij", "Drzewce", 2.5F, 1, 10, 1);
-            etienne.GenerujBron("Sztylet", "Miecze", 2.5F, 1, 10, 1);
+                Character postac = new Character();
 
-            etienne.GenerujOdziez("Elvanska suknia", 2.0f, 50f, 1, 0, "tlow");
-            etienne.Wyposaz("Elvanska suknia");
-            etienne.Wyposaz("Sztylet");
-            etienne.Wyposaz("Drewniany kij");
-            etienne.Wyposaz("Elficki srebrny miecz");
-            etienne.Schowaj("Sztylet");
+                
 
-            etienne.SprawdzEkwipunek();
+            }
 
 
 
