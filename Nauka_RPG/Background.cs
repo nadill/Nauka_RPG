@@ -17,7 +17,7 @@ namespace Nauka_RPG
             bgSkillMod = new Dictionary<SkillType, int>();
         }
 
-        private void AppendSkillsToBg(SkillType _skillType)
+        public void AppendSkillsToBg(SkillType _skillType)
         {
             bgSkillMod.Add(_skillType, 1);
         }

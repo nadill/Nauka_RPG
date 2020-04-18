@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nauka_RPG
+namespace Nauka_RPG.Utility
 {
-    public static class SystemMechanics
+    public static class SystemRPG
     {
 
         public static int TestRoll()
@@ -49,11 +49,18 @@ namespace Nauka_RPG
             }
             return rollScore;
         }
-        public static int DamageRoll(int _strMod, bool _isCritical=false)
+        public static int K100Roll()
+        {
+            Random diceRoll = new Random();
+             
+            
+            return diceRoll.Next(0, 100);
+        }
+        public static int DamageRoll(int _strMod, int _wpnDmg, int _conMod, int _blkValue, int _resistance, bool _isCritical=false)
         {
 
             Random diceRoll = new Random();
-            int rollScore = diceRoll.Next(1, 11) + _strMod;
+            int rollScore = diceRoll.Next(1, 11) + _strMod + _wpnDmg - _conMod - _blkValue - _resistance;
             rollScore += (_isCritical) ? diceRoll.Next(1, 11) : 0;
 
             return rollScore;

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,6 +9,6 @@
     <Compile Remove="Test.cs" />
     <Compile Remove="RzutKosci.cs" />
     <Compile Remove="Akcje.cs" />
-    <Compile Remove="Klasy ekwipunku\BronDystansowa.cs" />
+    <Compile Remove="Item Classes\BronDystansowa.cs" />
   </ItemGroup>
 </Project>

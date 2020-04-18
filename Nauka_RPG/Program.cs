@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Nauka_RPG.Utility;
+
 
 namespace Nauka_RPG
 {
@@ -21,7 +23,7 @@ namespace Nauka_RPG
             {
                 
 
-                Character postac = new Character();
+                //Character postac = new Character();
 
                 
 

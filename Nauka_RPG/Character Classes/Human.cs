@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nauka_RPG
+namespace Nauka_RPG.Character_Classes
 {
-    public class Item
+    public sealed class Human : Character
     {
+
     }
 }
