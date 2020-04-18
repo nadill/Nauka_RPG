@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nauka_RPG.Character_Classes
+namespace Nauka_RPG.Item_Classess
 {
     public class Item
     {

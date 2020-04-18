@@ -8,6 +8,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using Nauka_RPG.Utility;
+using Nauka_RPG.Item_Classess;
 
 namespace Nauka_RPG
 {
