@@ -9,77 +9,35 @@ using System.IO;
 using System.Text;
 using Nauka_RPG.Utility;
 using Nauka_RPG.Item_Classess;
+using static Nauka_RPG.Utility.SystemRPG;
 
 namespace Nauka_RPG
 {
-    public enum Race
-    { 
-        Human,
-        Elvan,
-        Borakai,
-        Yutri,
-        Alboros,
-        Other
-    }
-    public enum Sex
-    {
-        Male,
-        Female,
-    }
-    public enum BackgroundType
-    {
-        BirthPlace,
-        Past,
-        Profession,
-    }
-    public enum Occupation
-    {
-        Player,
-        Hostile,
-        Friendly,
-    }
-    public enum HealthCondition
-    {
-        Healthy,
-        Injured,
-        Wounded,
-        HeavyWounded,
-        Dying,
-        Dead,
-    }
     
-    public enum BodyPart
-    {
-        Head,
-        Torso,
-        LeftArm,
-        RightArm,
-        LeftLeg,
-        RightLeg,
-    }
-    public enum Difficulty
-    {
-        VeryEasy = 10,
-        Easy = 30,
-        Normal = 40,
-        Difficult = 60,
-        VeryDifficult = 80
-    }
 
     public abstract class Character
     {
         protected string name;
         protected string lastName;
         protected Race? race;
-        protected float height;
-        protected float weight;
+        protected double height;
+        protected double weight;
         protected int age;
         protected Sex sex;
         protected Occupation occupation;
 
         protected List<Item> equipment;
         protected List<Bag> bags;
-        protected int equipmentSize;
+        protected int eqCapacity = 0;
+        public int EqCapacity { 
+            get
+            {   
+                foreach (Bag bag in bags)
+                {
+                    eqCapacity += bag.BagSize;
+                }
+                return eqCapacity;
+            } }
 
         protected Dictionary<BodyPart, Weapon> equippedWeapons = new Dictionary<BodyPart, Weapon>()
         {
@@ -87,7 +45,7 @@ namespace Nauka_RPG
             { BodyPart.LeftArm, null},
         };
         protected const int handSize = 2;
-        public Dictionary<BodyPart, int> armourClass = new Dictionary<BodyPart, int>()
+        protected Dictionary<BodyPart, int> armourClass = new Dictionary<BodyPart, int>()
         {
             { BodyPart.Head, 0 },
             { BodyPart.Torso, 0 },
@@ -96,26 +54,32 @@ namespace Nauka_RPG
             { BodyPart.LeftLeg, 0 },
             { BodyPart.RightLeg, 0 },
         };
-        protected int heavyWounds;
-        protected int maxHeavyWounds;
-        protected int physicalResistance;
-        protected int reactionPool;
+        public int HeavyWounds { get; }
+        public int HeavyWoundThreshold { get { return attributes[AttributeType.Constitution].attributeBonus + 2; } }
+        public int PhysicalResistance { get { return attributes[AttributeType.Constitution].attributeBonus; } }
+        public int ReactionPool { get { return 1+ attributes[AttributeType.Mobility].attributeBonus / 2; } }
+         
+        public float MaxLoad { get { return 10 * (attributes[AttributeType.Constitution].attributeBonus + attributes[AttributeType.Strength].attributeBonus); } }
+        protected float currentLoad = 0;
 
-        protected float maxLoad;
-        protected float currentLoad;
 
         protected Dictionary<AttributeType, Attribute> attributes;
         protected Dictionary<SkillType, Skill> skills; 
         protected Dictionary<BackgroundType, Background> background;
 
-        protected int initiativeBonus;
+        public int InitiativeBonus { get { return attributes[AttributeType.Mobility].attributeBonus + attributes[AttributeType.Sense].attributeBonus; } }
         protected int maxHealth;
-        protected int currentHealth;
+        public int MaxHealth { get { return maxHealth; } }
+        protected int currentHealth = 0;
 
-        //public bool isDead;
-        //public Status status = Status.Default;
+        protected int soul;
+        protected int sanity;
 
-        
+
+        public override string ToString()
+        {
+            return string.Format($"{name} {lastName}");
+        }
         public void ShowInfo()
         {
             Console.WriteLine($"Imie: {name}, imie rodowe: {lastName}, wiek: {age}");
@@ -148,6 +112,10 @@ namespace Nauka_RPG
             {
                 return false;
             }
+        }
+        private void RecieveDamage(int _damage, DamageType _type)
+        {
+
         }
         public bool SkillTest(SkillType _skill, out int _result, out bool _isCritical, Difficulty _difficulty = 0)
         {

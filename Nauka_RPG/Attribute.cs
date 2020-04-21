@@ -2,23 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using static Nauka_RPG.Utility.SystemRPG;
+
 
 namespace Nauka_RPG
 {
-    public enum AttributeType
-    {
-        Strength,
-        Constitution,
-        Precision,
-        Mobility,
-        Mind,
-        Sense,
-        Personality,
-        Willpower,
-        Magic,
-        Soul,
-        Sanity,
-    }
+    
     public class Attribute
     {
 

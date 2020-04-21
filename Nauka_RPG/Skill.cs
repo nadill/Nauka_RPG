@@ -1,66 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using static Nauka_RPG.Utility.SystemRPG;
 
 namespace Nauka_RPG
 {
-    public enum SkillType
-    {
-        Whips,
-        Brawl,
-        Swords,
-        Axes,
-        Maces,
-        Polearms,
-        Claws,
-        Bows,
-        Crossbows,
-        Thrown,
-        Rifles,
-        Improvised,
-        Acrobatic,
-        Athletic,
-        Sneaking,
-        Riding,
-        Theft,
-        Perception,
-        Driving,
-        Survival,
-        Tracking,
-        EscapeArtist,
-        Lockpicking,
-        Alchemy,
-        Forgery,
-        Smithing,
-        Medicine,
-        FirstAid,
-        Navigation,
-        History,
-        Fauna,
-        Flora,
-        Religions,
-        Ocultism,
-        Engeneering,
-        Etiquette,
-        Trade,
-        Decieve,
-        Persuasion,
-        Gossip,
-        Leadership,
-        Intimidation,
-        Empathy,
-        Seduce,
-        Interrogation,
-        Mentorship,
-        Sigils,
-        Incantations,
-        MagicalPerception,
-        Pacts,
-        Counterspells,
-        Rituals,
-        Stabilisation,
-
-    }
     public class Skill
     {
 
