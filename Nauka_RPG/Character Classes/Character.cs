@@ -19,7 +19,7 @@ namespace Nauka_RPG
     {
         protected string name;
         protected string lastName;
-        protected Race? race;
+        protected Race race;
         protected double height;
         protected double weight;
         protected int age;
@@ -74,8 +74,8 @@ namespace Nauka_RPG
 
         protected int soul;
         protected int sanity;
-
-
+        public bool? IsAwaken { get; }
+        public int awakenChance = 0;
         public override string ToString()
         {
             return string.Format($"{name} {lastName}");

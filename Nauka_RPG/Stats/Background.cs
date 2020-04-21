@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Nauka_RPG.Utility.SystemRPG;
 
 namespace Nauka_RPG
 {
@@ -14,7 +15,7 @@ namespace Nauka_RPG
         {
             bgName = _bgName;
             bgType = _bgType;
-            bgSkillMod = new Dictionary<SkillType, int>();
+            bgSkillMod = new Dictionary<SkillType, int>(); 
         }
 
         public void AppendSkillsToBg(SkillType _skillType)

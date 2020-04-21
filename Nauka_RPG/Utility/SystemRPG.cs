@@ -330,7 +330,18 @@ namespace Nauka_RPG.Utility
             return rollScore;
         }
 
+        public static bool TryAwaken(Character _character)
+        {
+            bool isAwaken = false;
+            if (_character.IsAwaken== null)
+            {
+                int rollResult = K100Roll();
+                isAwaken = (rollResult <= _character.awakenChance) ? true : false;
+                
+            }
+            return isAwaken;
 
+        }
 
         public static BodyPart PartHit()
         {

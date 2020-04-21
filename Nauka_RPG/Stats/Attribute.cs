@@ -18,6 +18,7 @@ namespace Nauka_RPG
         public bool IsPhysical { get; }
         private int attributeExp;
         private int expToLvl;
+        
        
 
         public Attribute(string _attrName, int _attrValue, bool _isPhysical)
@@ -27,6 +28,7 @@ namespace Nauka_RPG
             IsPhysical = _isPhysical;
             attributeExp = 0;
             
+
             
         }
 
