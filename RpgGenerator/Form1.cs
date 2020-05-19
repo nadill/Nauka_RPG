@@ -16,5 +16,17 @@ namespace RpgGenerator
         {
             InitializeComponent();
         }
+
+        private void btnNewChar_Click(object sender, EventArgs e)
+        {
+            FrmCharCreation frame = new FrmCharCreation();
+
+            frame.ShowDialog();
+        }
+
+        private void btnLoadChar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
