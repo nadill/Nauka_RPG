@@ -83,6 +83,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnResetAll = new System.Windows.Forms.Button();
             this.pnlStr.SuspendLayout();
             this.pnlCon.SuspendLayout();
             this.pnlPre.SuspendLayout();
@@ -701,12 +702,23 @@
             this.label1.Text = "Roll";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnResetAll
+            // 
+            this.btnResetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnResetAll.Location = new System.Drawing.Point(528, 524);
+            this.btnResetAll.Name = "btnResetAll";
+            this.btnResetAll.Size = new System.Drawing.Size(206, 70);
+            this.btnResetAll.TabIndex = 16;
+            this.btnResetAll.Text = "Reset";
+            this.btnResetAll.UseVisualStyleBackColor = true;
+            // 
             // UCCreationStep2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(this.btnResetAll);
             this.Controls.Add(this.btnReroll);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
@@ -821,5 +833,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnResetAll;
     }
 }

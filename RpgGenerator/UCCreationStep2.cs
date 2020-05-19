@@ -26,7 +26,8 @@ namespace RpgGenerator
         }
         //bool mouseDrag = false;
         //Panel draggedPanel = null;
-        //Point startLoc;
+        Point startLoc;
+        Point preDragLoc;
         //int mouseX = 0;
         //int mouseY = 0;
 
@@ -39,7 +40,12 @@ namespace RpgGenerator
 
         private void Roll_MouseDown(object sender, MouseEventArgs e)
         {
-            //Point startLoc = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+            Point startLoc = e.Location;
+            Panel panel = (Panel)sender;
+
+            preDragLoc = panel.Location;
+
             //mouseX = Cursor.Position.X;
             //mouseY = Cursor.Position.Y;
         }
@@ -48,7 +54,9 @@ namespace RpgGenerator
         }
         private void Roll_MouseUp(object sender, MouseEventArgs e) 
         {
+            Panel panel = (Panel)sender;
 
+            panel.Location = preDragLoc;
         }
 
         public void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -56,10 +64,9 @@ namespace RpgGenerator
             if(e.Button == MouseButtons.Left)
             {
                 Panel panel = (Panel)sender;
-                panel.Location = new Point(e.X, e.Y);
+                panel.BringToFront();
+                panel.Location = new Point(panel.Location.X - (startLoc.X - e.X), panel.Location.Y - (startLoc.Y - e.Y));
             }
-            lblStrength.Text = string.Format("X:{0}, y:{1}", Cursor.Position.X, Cursor.Position.Y);
-            lblConstitution.Text = string.Format("X:{0}, y:{1}", e.X, e.Y);
         }
         public void mouse_Form_Location(object sender, MouseEventArgs e) {
         
